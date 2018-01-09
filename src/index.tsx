@@ -1,9 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { MyComponent } from "./components/hello";
+import { MyLogo } from "./components/header/logo";
+import { MyMenu } from "./components/header/menu";
 
 ReactDOM.render(
-    <MyComponent />,
-    document.getElementById("example")
+    <div>
+        <MyLogo />
+        <MyMenu />,
+    </div>,
+    document.getElementById("container")
 );
