@@ -1,0 +1,83 @@
+body, p{
+    margin: 0;
+    padding: 0;
+}
+
+.u-flex {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.u-block {
+    display: block;
+}
+.b-menu {
+    background-color: #fff;
+    border-bottom: 2px solid #8cb420;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 18px 0 22px;
+    min-height: 78px;
+}
+
+.b-menu .logo {
+    width: 146px;
+}
+
+.b-menu .b-list{
+    justify-content: space-between;
+    width: 530px;
+    list-style: none;
+    align-items: flex-end;
+}
+
+li{
+    width: 76px;
+    text-align: center;
+    align-items: flex-end;
+}
+
+.b-btn-register {
+    background: #8cb420;
+    height: 38px;
+    border: none;
+    align-items: center;
+    color: #fff;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    font-size: 15px;
+    text-decoration: none;
+}
+.b-card{
+    width: 300px;
+    background: #fdafaf;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 20px;
+    border: none;
+    background: #ffb23e;
+    padding: 8px;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 700;
+}
+
+form{
+    text-align: center;
+    width: 390px;
+    padding-top: 20px;
+    margin: auto;
+}
+
+input {
+    height: 20px;
+    margin-right: 10px;
+}

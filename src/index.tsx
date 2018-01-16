@@ -1,15 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Header } from "./components/header/index";
-import { NameUser } from "./components/welcome/welcome";
-import { Lifecycle } from "./components/Lifecycle/lifecycle";
+import { Main } from "./main";
 
 ReactDOM.render(
-    <div>
-        <Header />
-        <NameUser />
-        <Lifecycle />
-    </div>,
+    <Main />,
     document.getElementById("container")
 );

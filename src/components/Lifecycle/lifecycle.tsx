@@ -18,17 +18,21 @@ export class Lifecycle extends React.Component<any, any> {
     }
     
     addNumber() {
-        this.setState({count: this.state.count +1})
+        this.setState(function(prevState) {
+            return {
+                count: prevState.count + 1
+            }
+        })
     }
 
 
     componentDidMount() {
         console.log('componentDidMount');
-        setInterval(function () {
+        setInterval(() => {
           this.setState({
             count: this.state.count + 1
           });
-        }.bind(this), 1000);
+        }, 1000);
     };
 
     render() {

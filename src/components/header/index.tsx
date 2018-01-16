@@ -1,21 +1,15 @@
 import * as React from "react";
 import { MyLogo } from "./logo";
 import { MyMenu } from "./menu";
-
-const classMenu = {
-    display: 'flex',    
-}
+import { Register } from "./register"
 
 export class Header extends React.Component<any, {}> {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return(
-            <div style={classMenu}>
+            <div className="u-flex b-menu">
                 <MyLogo />
                 <MyMenu />
+                <Register />
             </div>
         )
     }
