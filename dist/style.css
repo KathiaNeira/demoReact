@@ -28,9 +28,12 @@ body, p{
 
 .b-menu .b-list{
     justify-content: space-between;
-    width: 530px;
+    width: 540px;
     list-style: none;
     align-items: flex-end;
+}
+.b-menu-item{
+    width: 778px;
 }
 
 li{
@@ -51,8 +54,8 @@ li{
     text-decoration: none;
 }
 .b-card{
-    width: 300px;
-    background: #fdafaf;
+    width: 400px;
+    background: #6f6f6f;
     padding: 10px;
     color: #fff;
     text-align: center;
@@ -80,4 +83,10 @@ form{
 input {
     height: 20px;
     margin-right: 10px;
+}
+span{
+    font-size: 16px
+}
+.u-left{
+    text-align: left;
 }

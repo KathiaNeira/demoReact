@@ -3,7 +3,7 @@ import * as ReactDom from "react-dom";
 
 interface MyPropsNameCard {
     name?: any;
-    direction?: any;
+    description?: any;
     key?: any;
 }
 
@@ -12,9 +12,9 @@ export class NameCard extends React.Component<MyPropsNameCard, {}> {
         return (
             <div className="b-card u-flex">
                 <ImageCard />
-                <div>
-                    <h2>{this.props.name}</h2>
-                    <span>{this.props.direction}</span>
+                <div className="u-left">
+                    <h2>Título: <span>{this.props.name}</span></h2>
+                    <h2>Descripción: <span>{this.props.description}</span></h2>                    
                 </div>
             </div>
         )
@@ -33,7 +33,7 @@ export class Card extends React.Component<MyPropsNameCard, {}> {
     render(){
         return(
             <div>
-                <NameCard name={this.props.name} direction={this.props.direction} key={this.props.key}/>
+                <NameCard name={this.props.name} description={this.props.description} key={this.props.key}/>
             </div>
         )
     }

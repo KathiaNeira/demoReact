@@ -5,7 +5,7 @@ import { Card } from "./components/welcome/cards";
 interface State {
     cards: any[];
     title: string;
-    content: string;
+    description: string;
 }
 
 export class Main extends React.Component<any, State> {
@@ -14,10 +14,10 @@ export class Main extends React.Component<any, State> {
         this.state = {
             cards: [{
                 title: "Surco",
-                content: "Surco 234"
+                description: "Surco 234"
             }],
             title: "",
-            content: ""
+            description: ""
         };
     }
 
@@ -27,15 +27,14 @@ export class Main extends React.Component<any, State> {
         this.setState((prevState) => {
             let card = {
                 title: this.state.title,
-                content: this.state.content
+                description: this.state.description
             }
             return {
                 title: '',
-                content: '',
+                description: '',
                 cards: [...prevState.cards, card]
             }
         });
-        console.log('============>', this.state)
     }
 
     onChangeTitle(evt) {
@@ -46,18 +45,17 @@ export class Main extends React.Component<any, State> {
                 title: target.value
             }
         });
-        console.log('state title', this.state);
     }
 
-    onChangeContent(evt) {
+    onChangedescription(evt) {
         let target = evt.target;
         console.log('target', target.value);
         this.setState(function(prevState) {
             return {
-                content: target.value
+                description: target.value
             }
         });
-        console.log('state content', this.state);
+        console.log('state description', this.state);
     }
 
     render() {
@@ -68,13 +66,13 @@ export class Main extends React.Component<any, State> {
                     {/* <Card /> */}
                     {this.state.cards.map((element:any, index) => {
                         return(
-                            <Card name={element.title} direction={element.content} key={index} />
+                            <Card name={element.title} description={element.description} key={index} />
                         )}
                     )}
                 </div>
                 <form>
                     <input value={this.state.title} placeholder="Ingrese nombre" type="text" onChange={this.onChangeTitle.bind(this)}/>
-                    <input value={this.state.content} placeholder="Ingrese dirección" type="text" onChange={this.onChangeContent.bind(this)}/>
+                    <input value={this.state.description} placeholder="Ingrese dirección" type="text" onChange={this.onChangedescription.bind(this)}/>
                     <button onClick={this.onClick.bind(this)}>Crear</button>
                 </form>
             </div>

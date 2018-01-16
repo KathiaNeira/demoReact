@@ -8,8 +8,10 @@ export class Header extends React.Component<any, {}> {
         return(
             <div className="u-flex b-menu">
                 <MyLogo />
-                <MyMenu />
-                <Register />
+                <div className="u-flex b-menu-item">
+                    <MyMenu />
+                    <Register />
+                </div>
             </div>
         )
     }
