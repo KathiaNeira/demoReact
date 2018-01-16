@@ -73,8 +73,8 @@ export class Main extends React.Component<any, State> {
                     )}
                 </div>
                 <form>
-                    <input placeholder="Ingrese nombre" type="text" onKeyPress={this.onChangeTitle.bind(this)}/>
-                    <input placeholder="Ingrese dirección" type="text" onKeyPress={this.onChangeContent.bind(this)}/>
+                    <input value={this.state.title} placeholder="Ingrese nombre" type="text" onChange={this.onChangeTitle.bind(this)}/>
+                    <input value={this.state.content} placeholder="Ingrese dirección" type="text" onChange={this.onChangeContent.bind(this)}/>
                     <button onClick={this.onClick.bind(this)}>Crear</button>
                 </form>
             </div>
