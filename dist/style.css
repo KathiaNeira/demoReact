@@ -32,9 +32,6 @@ body, p{
     list-style: none;
     align-items: flex-end;
 }
-.b-menu-item{
-    width: 778px;
-}
 
 li{
     width: 76px;
@@ -89,4 +86,12 @@ span{
 }
 .u-left{
     text-align: left;
+}
+
+.u-block{
+    display: block;
+}
+
+.u-none{
+    display: none;
 }
