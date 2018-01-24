@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Modal } from "../modal/modal";
-import { ModalRegister } from "../modal/modalRegister";
 import { ModalLogin } from "../modal/modalLogin";
 
 interface State {
@@ -10,7 +9,7 @@ interface State {
 }
 
 
-export class Register extends React.Component<any, State> {
+export class Login extends React.Component<any, State> {
     private ShowModal?:any = "";
     constructor(props) {
         super(props);
@@ -36,12 +35,11 @@ export class Register extends React.Component<any, State> {
         return(
             <div>
                 <div>
-                    <a href="" onClick={this.onClick.bind(this)}> Regístrate </a>
+                    <a href="" onClick={this.onClick.bind(this)}> Ingresa </a>
                     <Modal showModal={this.state.IsVisibility}>
                         <a href="" className="close" onClick={this.onCLickClose.bind(this)}>X</a>
-                        <ModalRegister />
+                        <ModalLogin />
                     </Modal>
-                    o  
                 </div>
             </div>
         )

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Header } from "./components/header";
 import { Card } from "./components/welcome/cards";
+import { Mapa } from "./components/mapa/mapa"
 
 interface State {
     cards: any[];
@@ -62,9 +63,9 @@ export class Main extends React.Component<any, State> {
         return(
             <div>
                 <Header />
-                <div className="u-flex">
+                {/* <div className="u-flex"> */}
                     {/* <Card /> */}
-                    {this.state.cards.map((element:any, index) => {
+                    {/* {this.state.cards.map((element:any, index) => {
                         return(
                             <Card name={element.title} description={element.description} key={index} />
                         )}
@@ -74,7 +75,8 @@ export class Main extends React.Component<any, State> {
                     <input value={this.state.title} placeholder="Ingrese nombre" type="text" onChange={this.onChangeTitle.bind(this)}/>
                     <input value={this.state.description} placeholder="Ingrese dirección" type="text" onChange={this.onChangedescription.bind(this)}/>
                     <button onClick={this.onClick.bind(this)}>Crear</button>
-                </form>
+                </form> */}
+                <Mapa />
             </div>
         )
     }

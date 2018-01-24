@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/googlemaps": "^3.30.5",
     "@types/react": "^16.0.34",
     "@types/react-dom": "^16.0.3",
     "awesome-typescript-loader": "^3.4.1",

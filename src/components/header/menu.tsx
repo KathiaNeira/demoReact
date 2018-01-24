@@ -1,7 +1,6 @@
 import * as React from "react";
 
 interface MyPropsMenu {
-    // items: string[];
     options?: any; 
 }
 
@@ -13,17 +12,12 @@ export class MyMenu extends React.Component<MyPropsMenu, myState> {
     constructor(props) {
         super(props);
         this.state = {
-            items: ['Venta', 'Alquiler', 'Proyectos', 'Zona Interbank', 'Indice m2', 'Profesionales', 'Más']
+            items: ['Item1', 'Item2', 'Item3', 'Item4', 'Item5', 'Item6', 'Item7']
         }
     }
 
     render() {        
         return(
-            // <ul className="b-list u-flex">
-            //     {this.props.items.map(function(name, index){
-            //         return <li style={this.props.items} key={ index }>{name}</li>;
-            //       })}
-            // </ul>
             <MyOptionsMenu options = {this.state.items} />
         )
     }
@@ -38,7 +32,7 @@ class MyOptionsMenu extends React.Component<MyPropsMenu, myState> {
         let options = this.props.options
         return(
             <div>
-                <ul>
+                <ul className="u-flex">
                     {options.map((option, index) => <li key={index}>{option}</li>)}
                 </ul>
             </div>
