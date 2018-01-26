@@ -33,6 +33,7 @@ export class Mapa extends React.Component<any, State> {
             map: '',
             marker: ''
         }
+        console.log('===>', this.props.location);
     }
 
     // Despues del montaje del componente pintar el mapa

@@ -36,7 +36,7 @@ export class Header extends React.Component<any, {}> {
                         <ul className="u-flex">
                             <li key="0"><Link to="/cards">Cards</Link></li>
                             <li key="1"><Link to="/modal">Modal</Link></li>
-                            <li key="2"><Link to="/mapa?pathParam?">Mapa</Link></li>
+                            <li key="2"><Link to="/mapa">Mapa</Link></li>
                             <li key="3"><Link to="/slider1">slider1</Link></li>
                         </ul>
 
@@ -44,7 +44,7 @@ export class Header extends React.Component<any, {}> {
 
                     <Route path="/cards" component={cards}/>
                     <Route path="/modal" component={modal}/>
-                    <Route path="/mapa" component={mapa}/>
+                    <Route path="/mapa/:id" component={mapa}/>
                     <Route path="/slider1" component={slider1}/>
                 </div>
             </Router>
@@ -59,8 +59,12 @@ const modal =()=> (
     </div>
 )
 
-const mapa =()=> (
-    <Mapa />
+const mapa =(props)=> (
+    // <Mapa />
+    <div>
+        <h2>Mapa</h2>
+        {props.routerParams.id}
+    </div>
 )
 
 const cards =()=> (

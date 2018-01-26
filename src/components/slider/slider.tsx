@@ -21,30 +21,32 @@ export class Slider extends React.Component<MyProps, MyState> {
 
     onPrev(evt){
         evt.preventDefault();
-        var totalSLider = this.props.images.length
+        var totalSLider = this.props.images.length -1; //  2-1=1
         if ( this.state.position <= 0 ) {
             this.setState({position: totalSLider})
-        };
+        } else {
+            this.setState(function(prevState) {
+                return {
+                    position: prevState.position - 1
+                }
+            })
+        }
 
-        this.setState(function(prevState) {
-            return {
-                position: prevState.position - 1
-            }
-        })
     }
 
     onNext(evt){
         evt.preventDefault();
-        var totalSLider = this.props.images.length;
-        if ( this.state.position >= totalSLider ) {
-            this.setState({position: 0})
-        };
+        var totalSLider = this.props.images.length - 1;
+        if ( this.state.position === totalSLider ) {
+            this.setState({position: 0});
+        } else {
+            this.setState(function(prevState) {
+                return {
+                    position: prevState.position + 1
+                }
+            })
+        }
 
-        this.setState(function(prevState) {
-            return {
-                position: prevState.position + 1
-            }
-        })
     }
 
     render(){
@@ -67,6 +69,7 @@ export class Slider extends React.Component<MyProps, MyState> {
                             </li>
                         )        
                     })}
+                    {newState.position}
                 </ul>
                 <a href="" className="arrow arrow-right" onClick={this.onNext.bind(this)}>Next</a>
             </div>
