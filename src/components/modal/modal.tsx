@@ -1,9 +1,7 @@
 import * as React from "react";
 
 interface MyPropsModal {
-    IsVisibility?: any;
     showModal?: any;
-    DataId?: any;
 }
 
 export class Modal extends React.Component<MyPropsModal, {}> {

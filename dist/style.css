@@ -7,6 +7,7 @@ body, p{
 .u-flex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .u-block {
@@ -66,6 +67,7 @@ button {
     margin-top: 20px;
     border: none;
     background: #ffb23e;
+    margin: 20px;
     padding: 8px;
     border-radius: 3px;
     color: #fff;
@@ -108,6 +110,7 @@ span{
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.82);
+    z-index: 3;
 }
 .modal{
     background: #fff;
@@ -121,4 +124,56 @@ span{
     color: gray;
     font-weight: bold;
     text-decoration: none;
+}
+
+/* infowindow google maps */
+.gm-style img {
+    width: 60px;
+}
+
+/* SLIDER */
+.b-slider {
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    width: 200px;
+    background: red;
+}
+
+.b-slider li {
+    width: 100%;
+}
+
+.b-slider img {
+    width: 100%;
+}
+
+.b-slider .show-loader{
+    background: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif') center center;
+    height: 150px;
+}
+.b-content-slider{
+    position: relative;
+    width: 200px;
+    background-color: antiquewhite;
+    margin-bottom: 20px;
+    margin-right: 20px
+}
+
+.arrow{
+    position: absolute;
+    background: rgba(101, 101, 101, 0.35);
+    top: 0;
+    bottom: 0;
+}
+
+.arrow-left{
+    left: 0;
+}
+
+.arrow-right{
+    right: 0;
+}
+.content-slider{
+    width: 300px;
 }

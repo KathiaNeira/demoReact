@@ -5,7 +5,6 @@ import { ModalLogin } from "../modal/modalLogin";
 
 interface State {
     IsVisibility? : any;
-    dataId?: any;
     modal?: any;
 }
 
@@ -36,12 +35,12 @@ export class Register extends React.Component<any, State> {
         return(
             <div>
                 <div>
-                    <a href="" onClick={this.onClick.bind(this)}> Regístrate </a>
+                    <button onClick={this.onClick.bind(this)}> Regístrate </button>
                     <Modal showModal={this.state.IsVisibility}>
                         <a href="" className="close" onClick={this.onCLickClose.bind(this)}>X</a>
                         <ModalRegister />
                     </Modal>
-                    o  
+                     o   
                 </div>
             </div>
         )

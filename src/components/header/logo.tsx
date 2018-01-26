@@ -3,7 +3,7 @@ import * as React from "react";
 export class MyLogo extends React.Component{
     render() {
         return (
-            <a href="">
+            <a href="/">
                 <p>LOGO</p>
             </a>
         )

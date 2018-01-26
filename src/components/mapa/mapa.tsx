@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-// import {googlemaps} from "googlemaps";
 
 interface State {
     direction?: any;
@@ -11,7 +10,7 @@ interface State {
 
 const MAP_STYLE = {
     height: '500px',
-    width: '100%'
+    width: '40%'
 }
 
 const DIRECTION1 = {
@@ -22,7 +21,7 @@ const DIRECTION1 = {
     }
 }
 
-const ZOOM = 8;
+const ZOOM = 13;
 
 const KEY = 'AIzaSyDNsN9zpuUNI6CFY2rBcGldDdNbNmQH0Io';
 
@@ -41,27 +40,57 @@ export class Mapa extends React.Component<any, State> {
         this.initMap();
     }
     
+    
     initMap() {
-        var map, marker, geocoder;
+        var map, infowindow,  marker, geocoder;
         this.loadScript(`https://maps.googleapis.com/maps/api/js?key=${KEY}&callback=`, () => {
-            // 1: creando el mapa
+            // 1: creando el mapa y mostrarlo en el div que tenga "REF"
             map = new google.maps.Map(ReactDOM.findDOMNode(this.refs.map), { 
                 center: {
                     lat: DIRECTION1.position.latitude,
                     lng: DIRECTION1.position.longitude
                 },
                 zoom: ZOOM
-             });
+            });
 
+            var contentString = 
+            `<div class="u-flex">
+                <div>
+                    <img src="http://maytech.com.mx/wp-content/uploads/2014/12/Negocio.png"/>
+                </div>
+                <div>
+                    <p>Mi Título</p>
+                    <p>tipo de inmueble</p>
+                    <p>S/. 475.6541</p>
+                </div>
+            </div>`;
+
+            infowindow = new google.maps.InfoWindow({
+            content: contentString
+            });
+            
+            // var icon = {
+            //     path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+            //     fillColor: '#FF0000',
+            //     fillOpacity: .6,
+            //     anchor: new google.maps.Point(0,0),
+            //     strokeWeight: 0,
+            //     scale: 1
+            // }
             // 2: creando el marker
-             marker = new google.maps.Marker({
-                 map: map,
-                 position: {
-                     lat: DIRECTION1.position.latitude,
-                     lng: DIRECTION1.position.longitude
-                 }
-             });
-
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                position: {
+                    lat: DIRECTION1.position.latitude,
+                    lng: DIRECTION1.position.longitude
+                },
+                // icon: icon
+            });
+            
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+              });
              this.setState(function(){
                  return {
                      map: map,
@@ -94,6 +123,10 @@ export class Mapa extends React.Component<any, State> {
         geocoder.geocode({'address': address}, function handleResults(results, status) {
             if ( status === google.maps.GeocoderStatus.OK) {
                 // Actualizamos las coordenadas del mapa
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                console.log('latitude', latitude, 'longitude', longitude);
+                console.log(results[0].address_components)
                 this.state.map.setCenter(results[0].geometry.location);
                 this.state.marker.setPosition(results[0].geometry.location);
                 return

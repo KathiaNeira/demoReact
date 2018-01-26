@@ -35,7 +35,7 @@ export class Login extends React.Component<any, State> {
         return(
             <div>
                 <div>
-                    <a href="" onClick={this.onClick.bind(this)}> Ingresa </a>
+                    <button onClick={this.onClick.bind(this)}> Ingresa </button>
                     <Modal showModal={this.state.IsVisibility}>
                         <a href="" className="close" onClick={this.onCLickClose.bind(this)}>X</a>
                         <ModalLogin />
