@@ -14,35 +14,41 @@ export class Register extends React.Component<any, State> {
     constructor(props) {
         super(props);
         this.state = {
-            IsVisibility: 'u-none'
+            IsVisibility: false
         }
     }
     
     onClick(evt) {
         evt.preventDefault();
-        this.setState({IsVisibility: 'u-flex'})
+        this.setState({IsVisibility: true})
     }
 
 
     onCLickClose(evt){
         evt.preventDefault();
         this.setState({
-            IsVisibility: 'u-none'
+            IsVisibility: false
         });
     }
 
     render() {
-        return(
-            <div>
-                <div>
-                    <button onClick={this.onClick.bind(this)}> Regístrate </button>
-                    <Modal showModal={this.state.IsVisibility}>
+        const modal = this.state.IsVisibility ? (
+            <Modal>
+                <div className="modal">
+                    <div className="ModalHead">
                         <a href="" className="close" onClick={this.onCLickClose.bind(this)}>X</a>
-                        <ModalRegister />
-                    </Modal>
-                     o   
+                    </div>
+                    <ModalRegister onClick={this.onClick}/>
+
                 </div>
-            </div>
+            </Modal>
+        ) : null;
+        console.log('modal>', modal);
+        return(
+            <React.Fragment>
+                <button onClick={this.onClick.bind(this)}> Abrir Modal 1 </button>
+                {modal} 
+            </React.Fragment>
         )
     }
 }

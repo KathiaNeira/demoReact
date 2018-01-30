@@ -34,6 +34,11 @@ body, p{
     align-items: flex-end;
 }
 
+ul{
+    margin: 0;
+    padding: 0;
+}
+
 li{
     width: 76px;
     text-align: center;
@@ -64,14 +69,15 @@ li{
 }
 
 button {
-    margin-top: 20px;
-    border: none;
-    background: #ffb23e;
     margin: 20px;
-    padding: 8px;
+    border: none;
+    background: #04bf8f;
+    font-size: 30px;
+    padding: 10px 30px;
     border-radius: 3px;
     color: #fff;
     font-weight: 700;
+    cursor: pointer;
 }
 
 form{
@@ -101,7 +107,7 @@ span{
 }
 
 /* Modal */
-.overlay{
+.modalContainer{
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -135,13 +141,17 @@ span{
 .b-slider {
     padding: 0;
     margin: 0;
-    white-space: nowrap;
+    /* white-space: nowrap; */
+    float: left;
     width: 200px;
     background: red;
+    overflow: hidden;
 }
-
+/* .b-slider ul {
+    width: 1600px
+} */
 .b-slider li {
-    width: 100%;
+    width: 200px;
 }
 
 .b-slider img {
@@ -152,13 +162,13 @@ span{
     background: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif') center center;
     height: 150px;
 }
-.b-content-slider{
+/* .b-content-slider{
     position: relative;
     width: 200px;
     background-color: antiquewhite;
-    margin-bottom: 20px;
-    margin-right: 20px
-}
+    margin-right: 20px;
+    border: 2px solid rgb(0, 67, 255);
+} */
 
 .arrow{
     position: absolute;
@@ -169,6 +179,7 @@ span{
 
 .arrow-left{
     left: 0;
+    z-index: 2;
 }
 
 .arrow-right{
@@ -176,4 +187,11 @@ span{
 }
 .content-slider{
     width: 300px;
+}
+.item-slider {
+    width: 530px;
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 2px solid #d0d0d0;
+    background: antiquewhite;
 }

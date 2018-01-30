@@ -23,7 +23,7 @@ export class Slider1 extends React.Component<{}, MyState> {
 
     render(){
         return(
-            <div className="u-flex">
+            <div className="u-flex item-slider">
                 <Slider images={this.state.images} />             
             </div>
         )

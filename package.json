@@ -23,6 +23,7 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "source-map-loader": "^0.2.3",
+    "styled-components": "^3.1.4",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.1"

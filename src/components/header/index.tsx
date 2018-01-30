@@ -30,7 +30,7 @@ export class Header extends React.Component<any, {}> {
     render(){
         return(
             <Router>
-                <div>
+                <React.Fragment>
                     <div className="u-flex b-menu">
                         <MyLogo />
                         <ul className="u-flex">
@@ -44,9 +44,9 @@ export class Header extends React.Component<any, {}> {
 
                     <Route path="/cards" component={cards}/>
                     <Route path="/modal" component={modal}/>
-                    <Route path="/mapa/:id" component={mapa}/>
+                    <Route path="/mapa" component={mapa}/>
                     <Route path="/slider1" component={slider1}/>
-                </div>
+                </React.Fragment>
             </Router>
         )
     }
@@ -60,11 +60,11 @@ const modal =()=> (
 )
 
 const mapa =(props)=> (
-    // <Mapa />
-    <div>
-        <h2>Mapa</h2>
-        {props.routerParams.id}
-    </div>
+    <Mapa />
+    // <div>
+    //     <h2>Mapa</h2>
+    //     {props.routerParams.id}
+    // </div>
 )
 
 const cards =()=> (

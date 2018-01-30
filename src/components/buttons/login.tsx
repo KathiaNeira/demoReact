@@ -4,44 +4,48 @@ import { ModalLogin } from "../modal/modalLogin";
 
 interface State {
     IsVisibility? : any;
-    dataId?: any;
-    modal?: any;
 }
-
 
 export class Login extends React.Component<any, State> {
     private ShowModal?:any = "";
     constructor(props) {
         super(props);
         this.state = {
-            IsVisibility: 'u-none'
+            IsVisibility: false
         }
     }
     
     onClick(evt) {
         evt.preventDefault();
-        this.setState({IsVisibility: 'u-flex'})
+        this.setState({IsVisibility: true})
     }
 
 
     onCLickClose(evt){
         evt.preventDefault();
         this.setState({
-            IsVisibility: 'u-none'
+            IsVisibility: false
         });
     }
 
     render() {
-        return(
-            <div>
-                <div>
-                    <button onClick={this.onClick.bind(this)}> Ingresa </button>
-                    <Modal showModal={this.state.IsVisibility}>
+        const modal = this.state.IsVisibility ? (
+            <Modal>
+                <div className="modal">
+                    <div className="ModalHead">
                         <a href="" className="close" onClick={this.onCLickClose.bind(this)}>X</a>
-                        <ModalLogin />
-                    </Modal>
+                    </div>
+                    <ModalLogin/>
+
                 </div>
-            </div>
+            </Modal>
+        ) : null;
+
+        return(
+            <React.Fragment>
+                <button onClick={this.onClick.bind(this)}> Abrir Modal 2</button>
+                {modal}
+            </React.Fragment>
         )
     }
 }
