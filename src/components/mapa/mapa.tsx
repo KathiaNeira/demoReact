@@ -10,7 +10,7 @@ interface State {
 
 const MAP_STYLE = {
     height: '500px',
-    width: '40%'
+    width: '100%'
 }
 
 const DIRECTION1 = {
@@ -25,6 +25,28 @@ const ZOOM = 13;
 
 const KEY = 'AIzaSyDNsN9zpuUNI6CFY2rBcGldDdNbNmQH0Io';
 
+const locations = [
+    {lat: -12.0463733, lng: -77.043754},
+    {lat: -12.0463733, lng: -77.043754},
+    {lat: -12.0468731, lng: -77.047754},
+    {lat: -12.0493731, lng: -77.042254},
+    {lat: -12.0463733, lng: -77.043754},
+    {lat: -12.0468731, lng: -77.047754},
+    {lat: -12.0493731, lng: -77.042254},
+    {lat: -12.0463733, lng: -77.043754},
+    {lat: -12.0468731, lng: -77.047754},
+    {lat: -12.0493731, lng: -77.042254},
+    {lat: -12.0463733, lng: -77.043754},
+    {lat: -12.0468731, lng: -77.047754},
+    {lat: -12.0493731, lng: -77.042254},
+
+    {lat: -12.0463723, lng: -77.093754},
+    {lat: -12.0468791, lng: -77.047154},
+    {lat: -12.0493851, lng: -77.032254},
+    {lat: -12.0464791, lng: -77.049754},
+    {lat: -12.0464791, lng: -77.049754},
+
+  ]
 export class Mapa extends React.Component<any, State> {
     constructor(props) {
         super(props);
@@ -33,7 +55,6 @@ export class Mapa extends React.Component<any, State> {
             map: '',
             marker: ''
         }
-        console.log('===>', this.props.location);
     }
 
     // Despues del montaje del componente pintar el mapa
@@ -52,6 +73,8 @@ export class Mapa extends React.Component<any, State> {
                     lng: DIRECTION1.position.longitude
                 },
                 zoom: ZOOM
+                // zoom: 3,
+                // center: {lat: -28.024, lng: 140.887}
             });
 
             var contentString = 
@@ -70,28 +93,75 @@ export class Mapa extends React.Component<any, State> {
             content: contentString
             });
             
-            // var icon = {
-            //     path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-            //     fillColor: '#FF0000',
-            //     fillOpacity: .6,
-            //     anchor: new google.maps.Point(0,0),
-            //     strokeWeight: 0,
-            //     scale: 1
-            // }
+
             // 2: creando el marker
-            marker = new google.maps.Marker({
-                map: map,
-                draggable: true,
-                position: {
-                    lat: DIRECTION1.position.latitude,
-                    lng: DIRECTION1.position.longitude
+            // marker = new google.maps.Marker({
+            //     map: map,
+            //     draggable: true,
+            //     position: {
+            //         lat: DIRECTION1.position.latitude,
+            //         lng: DIRECTION1.position.longitude
+            //     },
+            //     // icon: icon
+            // });
+
+            var clusterStyles = [
+                {
+                  textColor: 'white',
+                  url: 'https://icon-icons.com/icons2/1238/PNG/512/blacksquare_83753.png',
+                  height: 35,
+                  width: 35,
+                  minimumClusterSize: 3
                 },
-                // icon: icon
+               {
+                  textColor: 'white',
+                  url: 'https://icon-icons.com/icons2/1238/PNG/512/blacksquare_83753.png',
+                  height: 50,
+                  width: 50,
+                  minimumClusterSize:17
+                },
+               {
+                  textColor: 'white',
+                  url: 'https://icon-icons.com/icons2/1238/PNG/512/blacksquare_83753.png',
+                  height: 60,
+                  width: 60,
+                  minimumClusterSize: 20
+                }
+              ];
+            
+              var mcOptions = {
+                gridSize: 50,
+                styles: clusterStyles,
+                maxZoom: 15
+            };
+
+            var labels = '0123456789';
+            var markers = locations.map(function(location, i) {
+                console.log('labels[i]', labels[i]);
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i]
+                });
             });
             
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-              });
+            let max = (window as any).MarkerClusterer;
+            var markerCluster = new max(map, markers, mcOptions);
+
+
+            // marker.addListener('click', function() {
+            //     infowindow.open(map, marker);
+            //   });
+
+            // marker.addListener('click', (function(markers,content,infowindow){ 
+                
+                //     return function() {
+                    //         infowindow.setContent(content);
+                    //         infowindow.open(map,markers);
+                    //     };
+                    // })(marker,content,infowindow)); 
+                    
+                    console.log('marker', markers);
+                    // this.setMarker(map, locations)
              this.setState(function(){
                  return {
                      map: map,
@@ -101,6 +171,32 @@ export class Mapa extends React.Component<any, State> {
         });
     }
     
+setMarker(map, location){
+    var infowindow = new google.maps.InfoWindow()
+    for (var i=0; i< locations.length; i++) {
+        var lat = locations[i].lat;
+        var long = locations[i].lng;
+        console.log('lat...', lat);
+        console.log('long', long);
+        var latlngset = new google.maps.LatLng(lat, long);
+        var marker = new google.maps.Marker({
+            map: map,
+            title: 'título',
+            position: latlngset
+        });
+        map.setCenter(marker.getPosition())
+        var content = "Aqui mostrar la informacion del inmueble" +" "+i;
+        
+        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+            console.log('click');
+            return function() {
+                infowindow.setContent(content);
+                infowindow.open(map,marker);
+            };
+        })(marker,content,infowindow));  
+    }
+}
+
     onSubmit(evt) {
         evt.preventDefault();
         console.log('address', this.onChangeDirection(evt));
@@ -129,11 +225,11 @@ export class Mapa extends React.Component<any, State> {
                 console.log('latitude', latitude, 'longitude', longitude);
                 console.log(results[0].address_components)
                 this.state.map.setCenter(results[0].geometry.location);
-                this.state.marker.setPosition(results[0].geometry.location);
+                // this.state.marker.setPosition(results[0].geometry.location);
                 return
             }
 
-            alert('no se encontré resultados para esta búsqueda');
+            alert('no se encontró resultados para esta búsqueda');
         }.bind(this));
     }
 
@@ -142,10 +238,9 @@ export class Mapa extends React.Component<any, State> {
         var head = document.getElementsByTagName('head')[0];
         var script: any = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = url;
+        script.src = url;        
         script.onreadystatechange = callback;
         script.onload = callback;
-    
         head.appendChild(script);
     };    
 

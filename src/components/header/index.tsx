@@ -52,6 +52,7 @@ export class Header extends React.Component<any, {}> {
     }
 }
 
+
 const modal =()=> (
     <div className="u-flex">
         <Register />

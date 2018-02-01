@@ -57,14 +57,18 @@ export class Slider extends React.Component<MyProps, MyState> {
         return this.widthUl = this.totalItems
     }
 
+    
     onPrev(evt){
         evt.preventDefault();
         let target = evt.target;
         let withSlider = target.nextSibling.offsetWidth;
         if ( this.state.position <= 0 ) {
-            this.setState({
-                position: this.totalSLider,
-                withContainer: 0
+            this.setState(function(prevState){
+                console.log('prevState', prevState);
+                return{
+                    position: this.totalSLider,
+                    withContainer:  -(this.totalItems - 200) 
+                }
             })
         } else {
             this.setState(function(prevState) {
@@ -84,9 +88,11 @@ export class Slider extends React.Component<MyProps, MyState> {
         let withSlider = siblings.offsetWidth;
 
         if ( this.state.position === this.totalSLider ) {
-            this.setState({
-                position: 0,
-                withContainer: 0
+            this.setState(function(prevState){
+                return{
+                    position: 0,
+                    withContainer: 0
+                }
             });
         } else {
             this.setState(function(prevState) {
@@ -116,7 +122,7 @@ export class Slider extends React.Component<MyProps, MyState> {
                             }}
                             return (
                                 <li key={index}>
-                                    <img src={elem} alt=""  />
+                                    <img src={elem} alt=""  className="u-none"/>
                                 </li>
                             )        
                         })}
